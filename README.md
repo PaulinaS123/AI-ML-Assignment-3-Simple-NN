@@ -2,7 +2,7 @@
 # MNIST Digit Classification with a Feedforward Neural Network
 
 **Student:** Victoria Salomon  
-**Course:** AI / Machine Learning Assignment  
+**Course:** AD 331 AI / Machine Learning Assignment  
 **Framework:** TensorFlow / Keras (TensorFlow 2.12.0)
 
 ## Project Overview
@@ -49,6 +49,51 @@ The model is a simple Feedforward Neural Network (fully connected / dense networ
    - Dense layer with 10 neurons  
    - Activation function: Softmax  
    - Softmax converts the output into a probability distribution across the 10 digit classes (0–9).
+  
+## Training Details
+
+- Optimizer: Adam
+
+- Loss Function: Categorical Crossentropy
+
+- Metrics: Accuracy
+
+- Epochs: 5
+
+- Batch Size: 32
+
+- Validation Split: 0.1 (10% of the training data used for validation)
+
+During training, both training and validation accuracy improved each epoch and reached around ~98% accuracy by the final epoch, which shows strong learning without major overfitting.
+
+## Final Evaluation
+
+After training, the model was evaluated on the test set (10,000 images the model did not see during training).
+
+Final Test Loss: 0.0786
+Final Test Accuracy: 0.9759 (97.59%)
+
+This means the model correctly classifies about 97.6% of handwritten digits it hasn’t seen before.
+
+Single Image Prediction Demo
+
+To demonstrate that the trained model works on individual images:
+
+A random image from the test set was selected.
+
+The model predicted the digit.
+
+The true label was compared to the prediction.
+
+The image was displayed using matplotlib.
+
+## Example result from the notebook:
+
+Model prediction: 7
+
+True label: 7
+
+Displayed the digit with the title: Predicted: 7, True: 7
 
 In Keras code, the model looks like this:
 
@@ -57,3 +102,4 @@ model = Sequential([
     Dense(128, activation='relu', input_shape=(784,)),
     Dense(10, activation='softmax')
 ])
+
